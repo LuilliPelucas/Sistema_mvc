@@ -1,4 +1,9 @@
 <?php
+/**
+ * Dashboard Principal del Sistema
+ * 
+ * Página de inicio con estadísticas y accesos rápidos
+ */
 
 session_start();
 require_once 'config/config.php';
