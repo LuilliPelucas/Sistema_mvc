@@ -17,6 +17,11 @@ require_once VIEWS_PATH . 'layout/header.php';
                 <h3 class="mb-1"><i class="fas fa-users me-2"></i><?php echo $titulo; ?></h3>
                 <p class="mb-0 opacity-75">Gestión de proveedores del sistema</p>
             </div>
+            <a href="<?php echo BASE_URL; ?>proveedores/imprimir" 
+                   target="_blank" 
+                   class="btn btn-imprimir">
+                    <i class="fas fa-print me-2"></i>Imprimir PDF
+                </a>
             <a href="<?php echo BASE_URL; ?>proveedores/crear" class="btn btn-crear">
                 <i class="fas fa-plus me-2"></i>Nuevo Proveedor
             </a>

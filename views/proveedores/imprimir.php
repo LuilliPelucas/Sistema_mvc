@@ -1,8 +1,8 @@
 <?php
 /**
- * Vista: Imprimir Listado de Inventario
+ * Vista: Imprimir Listado de Proveedores
  * 
- * Genera un PDF con el listado de todo el inventario
+ * Genera un PDF con el listado de todos los proveedores
  * Diseño profesional y optimizado para impresión
  */
 
@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de Inventario - Impresión</title>
+    <title>Listado de Proveedores - Impresión</title>
     
     <style>
         /* Estilos para impresión */
@@ -25,7 +25,7 @@
         
         body {
             font-family: 'Arial', sans-serif;
-            font-size: 10pt;
+            font-size: 11pt;
             line-height: 1.4;
             color: #333;
             padding: 20mm;
@@ -74,66 +74,48 @@
             color: #666;
         }
         
-        /* Tabla de inventario */
-        .inventario-table {
+        /* Tabla de proveedores */
+        .proveedores-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
         }
         
-        .inventario-table thead {
+        .proveedores-table thead {
             background: linear-gradient(135deg, #5c9ead, #7db8c7);
             color: white;
         }
         
-        .inventario-table th {
-            padding: 10px 6px;
+        .proveedores-table th {
+            padding: 12px 8px;
             text-align: left;
             font-weight: bold;
+            font-size: 10pt;
+            border: 1px solid #ddd;
+        }
+        
+        .proveedores-table td {
+            padding: 10px 8px;
+            border: 1px solid #ddd;
             font-size: 9pt;
-            border: 1px solid #ddd;
         }
         
-        .inventario-table td {
-            padding: 8px 6px;
-            border: 1px solid #ddd;
-            font-size: 8pt;
-        }
-        
-        .inventario-table tbody tr:nth-child(even) {
+        .proveedores-table tbody tr:nth-child(even) {
             background-color: #f8f9fa;
         }
         
-        .inventario-table tbody tr:hover {
+        .proveedores-table tbody tr:hover {
             background-color: #e8f4f8;
         }
         
-        .inventario-id {
+        .proveedor-id {
             font-weight: bold;
             color: #5c9ead;
         }
         
-        .inventario-codigo {
+        .proveedor-clave {
             font-weight: bold;
             color: #333;
-        }
-        
-        .number {
-            text-align: right;
-        }
-        
-        .currency {
-            text-align: right;
-        }
-        
-        .status-active {
-            color: #28a745;
-            font-weight: bold;
-        }
-        
-        .status-inactive {
-            color: #dc3545;
-            font-weight: bold;
         }
         
         /* Footer del documento */
@@ -179,7 +161,7 @@
             }
             
             /* Evitar saltos de página dentro de las filas */
-            .inventario-table tr {
+            .proveedores-table tr {
                 page-break-inside: avoid;
             }
         }
@@ -246,13 +228,13 @@
         }
         
         .stat-number {
-            font-size: 20pt;
+            font-size: 24pt;
             font-weight: bold;
             color: #5c9ead;
         }
         
         .stat-label {
-            font-size: 9pt;
+            font-size: 10pt;
             color: #666;
         }
     </style>
@@ -280,7 +262,7 @@
         </div>
                 
         <div class="title-section">
-            <div class="document-title">Listado de Inventario</div>
+            <div class="document-title">Listado de Proveedores</div>
             <div class="document-subtitle"><?php echo SYSTEM_NAME; ?></div>
         </div>
         
@@ -294,71 +276,61 @@
     <!-- Estadísticas -->
     <div class="statistics no-print">
         <div class="stat-item">
-            <div class="stat-number"><?php echo count($inventarios); ?></div>
-            <div class="stat-label">Total de Artículos</div>
+            <div class="stat-number"><?php echo count($proveedores); ?></div>
+            <div class="stat-label">Total de Proveedores</div>
         </div>
         <div class="stat-item">
             <div class="stat-number">
                 <?php 
-                $activos = array_filter($inventarios, function($item) {
-                    return $item['activo'] == 1;
-                });
-                echo count($activos); 
+                $ciudades = array_unique(array_column($proveedores, 'ciudad'));
+                echo count(array_filter($ciudades)); 
                 ?>
             </div>
-            <div class="stat-label">Artículos Activos</div>
+            <div class="stat-label">Ciudades</div>
         </div>
         <div class="stat-item">
             <div class="stat-number">
                 <?php 
-                $totalExistencia = array_sum(array_column($inventarios, 'existencia'));
-                echo number_format($totalExistencia, 0);
+                $estados = array_unique(array_column($proveedores, 'estado'));
+                echo count(array_filter($estados)); 
                 ?>
             </div>
-            <div class="stat-label">Existencia Total</div>
+            <div class="stat-label">Estados</div>
         </div>
     </div>
     
-    <!-- Tabla de inventario -->
-    <table class="inventario-table">
+    <!-- Tabla de proveedores -->
+    <table class="proveedores-table">
         <thead>
             <tr>
                 <th style="width: 8%;">ID</th>
-                <th style="width: 10%;">Código</th>
-                <th style="width: 20%;">Descripción</th>
-                <th style="width: 8%;">Existencia</th>
-                <th style="width: 8%;">Precio Costo</th>
-                <th style="width: 8%;">Precio Venta</th>
-                <th style="width: 6%;">Moneda</th>
-                <th style="width: 6%;">Mínimo</th>
-                <th style="width: 6%;">Máximo</th>
-                <th style="width: 6%;">Unidad</th>
-                <th style="width: 8%;">Estado</th>
+                <th style="width: 12%;">Clave</th>
+                <th style="width: 25%;">Nombre</th>
+                <th style="width: 25%;">Dirección</th>
+                <th style="width: 5%;">Ext.</th>
+                <th style="width: 5%;">Int.</th>
+                <th style="width: 10%;">Ciudad</th>
+                <th style="width: 10%;">Estado</th>
             </tr>
         </thead>
         <tbody>
-            <?php if (empty($inventarios)): ?>
+            <?php if (empty($proveedores)): ?>
                 <tr>
-                    <td colspan="11" style="text-align: center; padding: 30px; color: #999;">
-                        No hay artículos en el inventario
+                    <td colspan="8" style="text-align: center; padding: 30px; color: #999;">
+                        No hay proveedores registrados
                     </td>
                 </tr>
             <?php else: ?>
-                <?php foreach ($inventarios as $inventario): ?>
+                <?php foreach ($proveedores as $proveedor): ?>
                 <tr>
-                    <td class="inventario-id"><?php echo $inventario['inventariosid']; ?></td>
-                    <td class="inventario-codigo"><?php echo htmlspecialchars($inventario['codigoarticulo']); ?></td>
-                    <td><?php echo htmlspecialchars($inventario['descripcion']); ?></td>
-                    <td class="number"><?php echo number_format($inventario['existencia'], 2); ?></td>
-                    <td class="currency">$<?php echo number_format($inventario['precio_costo'], 2); ?></td>
-                    <td class="currency">$<?php echo number_format($inventario['precio_venta'], 2); ?></td>
-                    <td style="text-align: center;"><?php echo htmlspecialchars($inventario['moneda']); ?></td>
-                    <td class="number"><?php echo number_format($inventario['minimo'], 2); ?></td>
-                    <td class="number"><?php echo number_format($inventario['maximo'], 2); ?></td>
-                    <td style="text-align: center;"><?php echo htmlspecialchars($inventario['unidad'] ?: 'PZA'); ?></td>
-                    <td class="<?php echo $inventario['activo'] == 1 ? 'status-active' : 'status-inactive'; ?>">
-                        <?php echo $inventario['activo'] == 1 ? 'Activo' : 'Inactivo'; ?>
-                    </td>
+                    <td class="proveedor-id"><?php echo $proveedor['proveedoresid']; ?></td>
+                    <td class="proveedor-clave"><?php echo htmlspecialchars($proveedor['claveproveedor']); ?></td>
+                    <td><?php echo htmlspecialchars($proveedor['nombreproveedor']); ?></td>
+                    <td><?php echo htmlspecialchars($proveedor['direccion'] ?: '-'); ?></td>
+                    <td style="text-align: center;"><?php echo htmlspecialchars($proveedor['exterior'] ?: '-'); ?></td>
+                    <td style="text-align: center;"><?php echo htmlspecialchars($proveedor['interior'] ?: '-'); ?></td>
+                    <td><?php echo htmlspecialchars($proveedor['ciudad'] ?: '-'); ?></td>
+                    <td><?php echo htmlspecialchars($proveedor['estado'] ?: '-'); ?></td>
                 </tr>
                 <?php endforeach; ?>
             <?php endif; ?>

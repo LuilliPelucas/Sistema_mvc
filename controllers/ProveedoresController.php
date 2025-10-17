@@ -186,5 +186,28 @@ class ProveedoresController extends Controller {
             ], 400);
         }
     }
+
+    /**
+     * Método imprimir - Genera vista de impresión/PDF de proveedores
+     * Ruta: /proveedores/imprimir
+     * 
+     * @return void
+     */
+    public function imprimir() {
+        // Obtener todos los proveedores
+        $proveedores = $this->proveedorModel->getAll();
+        
+        // Datos para la vista
+        $datos = [
+            'titulo' => 'Listado de Proveedores - Impresión',
+            'proveedores' => $proveedores
+        ];
+        
+        // Cargar la vista de impresión
+        $this->loadView('proveedores/imprimir', $datos);
+    }
+
+
+
 }
 ?>
