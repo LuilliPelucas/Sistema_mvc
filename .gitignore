@@ -1,0 +1,13 @@
+# Archivos de PHP
+vendor/
+composer.lock
+.env
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+

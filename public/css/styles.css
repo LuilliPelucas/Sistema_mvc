@@ -1,0 +1,365 @@
+/**
+ * Estilos Personalizados del Sistema MVC
+ * 
+ * Tema: Azules Suaves
+ * Diseño responsive para tablets y móviles
+ * 
+ * @author Tu Nombre
+ * @version 1.0
+ */
+
+/* ============================================
+   VARIABLES CSS
+   ============================================ */
+:root {
+    --azul-principal: #5c9ead;
+    --azul-oscuro: #4a7c89;
+    --azul-claro: #7db8c7;
+    --azul-muy-claro: #e8f4f8;
+    --blanco: #ffffff;
+    --gris-claro: #f8f9fa;
+    --gris-medio: #6c757d;
+    --texto-oscuro: #2c3e50;
+    --exito: #28a745;
+    --peligro: #dc3545;
+    --advertencia: #ffc107;
+}
+
+/* ============================================
+   ESTILOS GENERALES
+   ============================================ */
+body {
+    background: linear-gradient(135deg, var(--azul-muy-claro) 0%, var(--blanco) 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--texto-oscuro);
+}
+
+/* ============================================
+   NAVBAR PERSONALIZADA
+   ============================================ */
+.navbar-custom {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-claro));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--blanco);
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: var(--blanco);
+    opacity: 0.9;
+}
+
+.navbar-custom .nav-link {
+    color: var(--blanco);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.navbar-custom .nav-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--blanco);
+}
+
+/* Estilo del toggler para móviles */
+.navbar-toggler {
+    border-color: var(--blanco);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ============================================
+   CARDS PERSONALIZADAS
+   ============================================ */
+.card-custom {
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(92, 158, 173, 0.15);
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.card-custom .card-header {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-claro));
+    color: var(--blanco);
+    border-radius: 15px 15px 0 0 !important;
+    padding: 1.5rem;
+    border: none;
+}
+
+.card-custom .card-header h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.card-custom .card-body {
+    padding: 2rem;
+}
+
+/* ============================================
+   BOTONES PERSONALIZADOS
+   ============================================ */
+
+/* Botón Crear/Nuevo */
+.btn-crear {
+    background: linear-gradient(135deg, var(--exito), #20c997);
+    color: var(--blanco);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-crear:hover {
+    background: linear-gradient(135deg, #218838, #1aa179);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Botón Volver */
+.btn-volver {
+    background: var(--blanco);
+    color: var(--azul-principal);
+    border: 2px solid var(--blanco);
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: var(--azul-principal);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(92, 158, 173, 0.3);
+}
+
+/* Botón Guardar */
+.btn-guardar {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-claro));
+    color: var(--blanco);
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-guardar:hover {
+    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-principal));
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(92, 158, 173, 0.4);
+}
+
+/* Botón Cancelar */
+.btn-cancelar {
+    background: var(--gris-claro);
+    color: var(--gris-medio);
+    border: 2px solid var(--gris-medio);
+    padding: 0.7rem 2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-cancelar:hover {
+    background: var(--gris-medio);
+    color: var(--blanco);
+}
+
+/* Botón Imprimir */
+.btn-imprimir {
+    background: linear-gradient(135deg, #6f42c1, #8b5cf6);
+    color: var(--blanco);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-imprimir:hover {
+    background: linear-gradient(135deg, #5a32a3, #6f42c1);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+}
+
+/* Botón Editar */
+.btn-editar {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: var(--blanco);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-editar:hover {
+    background: linear-gradient(135deg, #138496, #117a8b);
+    color: var(--blanco);
+    transform: scale(1.1);
+}
+
+/* Botón Eliminar */
+.btn-eliminar {
+    background: linear-gradient(135deg, var(--peligro), #c82333);
+    color: var(--blanco);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+    color: var(--blanco);
+    transform: scale(1.1);
+}
+
+/* ============================================
+   TABLA PERSONALIZADA
+   ============================================ */
+table.dataTable thead th {
+    background: var(--azul-principal);
+    color: var(--blanco);
+    font-weight: 600;
+    border: none;
+    padding: 1rem;
+}
+
+table.dataTable tbody tr {
+    transition: all 0.2s ease;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: var(--azul-muy-claro);
+}
+
+table.dataTable tbody td {
+    padding: 0.9rem;
+    vertical-align: middle;
+}
+
+/* ============================================
+   BADGES PERSONALIZADOS
+   ============================================ */
+.badge-activo {
+    background: var(--exito);
+    color: var(--blanco);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.badge-inactivo {
+    background: var(--gris-medio);
+    color: var(--blanco);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* ============================================
+   FORMULARIOS
+   ============================================ */
+.form-label {
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid var(--azul-muy-claro);
+    border-radius: 10px;
+    padding: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 0.2rem rgba(92, 158, 173, 0.25);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    background: linear-gradient(135deg, var(--azul-principal), var(--azul-claro));
+    color: var(--blanco);
+    margin-top: auto;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* ============================================
+   DATATABLE PERSONALIZADO
+   ============================================ */
+.dataTables_wrapper .dataTables_filter input {
+    border: 2px solid var(--azul-principal);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 2px solid var(--azul-principal);
+    border-radius: 10px;
+    padding: 0.3rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--azul-principal) !important;
+    border-color: var(--azul-principal) !important;
+    color: var(--blanco) !important;
+    border-radius: 5px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--azul-claro) !important;
+    border-color: var(--azul-claro) !important;
+    color: var(--blanco) !important;
+}
+
+/* ============================================
+   RESPONSIVE - TABLETS Y MÓVILES
+   ============================================ */
+@media (max-width: 768px) {
+    .card-custom .card-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .btn-crear, .btn-volver {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .card-custom .card-body {
+        padding: 1rem;
+    }
+    
+    .navbar-custom .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-custom .card-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .btn-crear, .btn-volver, .btn-guardar, .btn-cancelar {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
